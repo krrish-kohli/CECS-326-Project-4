@@ -1,50 +1,69 @@
 # CECS-326 – Group Project 4: CPU Scheduling Algorithms
 
-This project implements three classic CPU scheduling algorithms in Python:
-First-Come First-Served (FCFS), Priority Scheduling, and Round-Robin (RR).
+This project implements three classic CPU scheduling algorithms in Python:  
+- **First-Come First-Served (FCFS)**
+- **Priority Scheduling**
+- **Round-Robin (RR)**.
+  
 The simulator reads a list of tasks (name, priority, CPU burst), schedules them according to the selected algorithm, and prints the execution order and timing information.
 
-All tasks are assumed to arrive at time 0, and the simulation is non-preemptive, except for Round-Robin where time quantum = 10 ms.
+All tasks are assumed to arrive at time 0, and the simulation is non-preemptive, except for Round-Robin where the time quantum is **10 ms**.
 
-Requirements
+---
 
-OS: Linux, macOS, or Windows
+## Requirements
+- **OS:** Linux, macOS, or Windows  
+- **Python:** Version **3.8 or newer**  
+- No external libraries required
 
-Python: Version 3.8 or newer
+---
 
-No external libraries required
+## How to Run
 
-How to Run
-
-Each scheduling algorithm is implemented in a separate file.
+Each scheduling algorithm is implemented in a separate file.  
 The main program that loads tasks and runs the chosen scheduler is:
 
+```
 driver.py
+```
 
-Running FCFS
+### Running FCFS
+```
 python3 driver.py fcfs schedule.txt
+```
 
-Running Priority Scheduling
+### Running Priority Scheduling
+```
 python3 driver.py priority schedule.txt
+```
 
-Running Round-Robin Scheduling
+### Running Round-Robin Scheduling
+```
 python3 driver.py rr schedule.txt
+```
 
-Input Format
+---
 
-schedule.txt must contain tasks in this format:
+## Input Format
 
+`schedule.txt` must contain tasks in this format:
+
+```
 T1, 4, 20
 T2, 2, 25
 T3, 3, 25
 T4, 3, 15
 T5, 10, 10
+```
 
+Format:  
+`[TaskName], [Priority], [CPU Burst]`
 
-Format:
-[TaskName], [Priority], [CPU Burst]
+---
 
-Example Output (FCFS Example)
+## Example Output (FCFS Example)
+
+```
 ============================================================
                 FCFS SCHEDULING SIMULATION
 ============================================================
@@ -72,8 +91,13 @@ SUMMARY
 Total CPU time: 95 ms
 Average waiting time: 41.0 ms
 Average turnaround time: 60.0 ms
+```
 
-Example Output (Priority Scheduling Example)
+---
+
+## Example Output (Priority Scheduling Example)
+
+```
 ============================================================
            PRIORITY SCHEDULING SIMULATION
 ============================================================
@@ -86,11 +110,14 @@ T4 (priority=3)
 T2 (priority=2)
 
 ...
+```
 
-Example Output (Round-Robin Example)
+---
 
-Time quantum = 10 ms
+## Example Output (Round-Robin Example)  
+Time quantum = **10 ms**
 
+```
 ============================================================
             ROUND ROBIN (Q = 10 ms)
 ============================================================
@@ -105,3 +132,19 @@ Running T2 for 10 ms
 ...
 ============================================================
 Simulation complete.
+```
+
+---
+
+## Project Structure
+
+```
+|-- driver.py               # Main program that loads tasks and runs schedulers
+|-- schedule_fcfs.py        # FCFS algorithm
+|-- schedule_priority.py    # Priority scheduling algorithm
+|-- schedule_rr.py          # Round Robin scheduling algorithm
+|-- task.py                 # Task class (name, priority, burst)
+|-- schedule.txt            # Sample input file
+```
+
+---
