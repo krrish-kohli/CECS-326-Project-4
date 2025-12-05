@@ -1,53 +1,52 @@
 from task import Task, run
 
-# Time quantum for Round-Robin scheduling
+# Time quantum for Round-Robin
 TIME_QUANTUM = 10
 
 
 def pick_next_task(task_queue):
-
+    # Return the first task in queue (FIFO)
     if not task_queue:
         return None
     return task_queue[0]
 
 
 def schedule(task_list):
-
+    # Schedule tasks using Round-Robin with time quantum = 10ms
     print("\n" + "=" * 60)
     print("Round-Robin (RR) Scheduling (Time Quantum = 10ms)")
     print("=" * 60 + "\n")
 
-    # Create a queue with copies of tasks (to preserve remaining burst time)
-    task_queue = []
+    # Create queue with task copies (to track remaining burst)
+    queue = []
     for task in task_list:
-        # Create a new task object to track remaining burst time
         new_task = Task(task.name, task.priority, task.burst)
-        task_queue.append(new_task)
+        queue.append(new_task)
 
     total_time = 0
 
-    while task_queue:
-        # Pick the next task (first in queue)
-        current_task = pick_next_task(task_queue)
+    # Process tasks in circular order
+    while queue:
+        # Get next task from queue
+        current = pick_next_task(queue)
 
-        if current_task:
-            # Determine how long to run this task
-            # Run for time quantum or remaining burst, whichever is smaller
-            burst_time = min(TIME_QUANTUM, current_task.remaining_burst)
+        if current:
+            # Run for time quantum or remaining burst (whichever is less)
+            time_to_run = min(TIME_QUANTUM, current.remaining_burst)
 
-            # Run the task
-            run(current_task, burst_time)
-            total_time += burst_time
+            # Execute the task
+            run(current, time_to_run)
+            total_time += time_to_run
 
             # Update remaining burst time
-            current_task.remaining_burst -= burst_time
+            current.remaining_burst -= time_to_run
 
-            # Remove task from front of queue
-            task_queue.pop(0)
+            # Remove from front of queue
+            queue.pop(0)
 
-            # If task still has remaining burst time, add it to back of queue
-            if current_task.remaining_burst > 0:
-                task_queue.append(current_task)
+            # If task not finished, add to back of queue
+            if current.remaining_burst > 0:
+                queue.append(current)
 
     print(f"\nTotal execution time: {total_time} ms")
     print("=" * 60 + "\n")
