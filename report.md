@@ -37,7 +37,7 @@ The project is organized into a driver and one module per scheduling policy:
 
 - `driver.py`  
   - Entry point and **test harness**.  
-  - Does **not** parse `Schedule.txt`.  
+  - Does **not** parse `schedule.txt`.  
   - Checks that `schedule.txt` is present and non-empty.  
   - Builds an internal list of three test tasks and runs FCFS, Priority, and RR on that list.
 - `task.py`  
@@ -48,7 +48,7 @@ The project is organized into a driver and one module per scheduling policy:
   - Priority implementation (non-preemptive).
 - `schedule_rr.py`  
   - Round-Robin implementation with **quantum = 10 ms**.
-- `Schedule.txt`  
+- `schedule.txt`  
   - Example input file containing 5 tasks in the format `TaskName, Priority, Burst`.  
   - Currently used only for the driver’s sanity check that a schedule file exists and has at least one task line.
 
@@ -149,7 +149,7 @@ This demonstrates that:
 
 ### e) Example input file
 
-`Schedule.txt` contains the 5-task example from the project description:
+`schedule.txt` contains the 5-task example from the project description:
 
 ```text
 T1, 4, 20
