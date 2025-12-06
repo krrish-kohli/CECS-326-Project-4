@@ -28,6 +28,7 @@ python3 driver.py
 # or, equivalently:
 python3 driver.py schedule.txt
 ```
+or on some systems:
 ```python
 python driver.py
 # or, equivalently:
