@@ -23,83 +23,80 @@ You also provide a `schedule.txt` file in the same directory; the driver **check
 
 From the directory containing the files, run:
 
-```bash
+```python
 python3 driver.py
 # or, equivalently:
-python3 driver.py Schedule.txt
+python3 driver.py schedule.txt
 ```
-```bash
+```python
 python driver.py
 # or, equivalently:
-python driver.py Schedule.txt
+python driver.py schedule.txt
 ```
 
 ## Example Output (FCFS Example)
 
-```bash
+```text
+Reading schedule from: schedule.txt
+
 ============================================================
-CPU Scheduler Test Suite
+Loaded Tasks:
+============================================================
+Task: T1, Priority: 4, Burst: 20ms
+Task: T2, Priority: 2, Burst: 25ms
+Task: T3, Priority: 3, Burst: 25ms
+Task: T4, Priority: 3, Burst: 15ms
+Task: T5, Priority: 10, Burst: 10ms
 ============================================================
 
-Testing imports...
-✓ task.py imported successfully
-✓ schedule_fcfs.py imported successfully
-✓ schedule_priority.py imported successfully
-✓ schedule_rr.py imported successfully
-
-Testing schedule file...
-✓ schedule.txt found with 5 tasks
-
-Running quick functionality test...
-
---- Testing FCFS ---
 
 ============================================================
 FCFS (First-Come, First-Served) Scheduling
 ============================================================
 
-Running task = [T1] priority = [3] burst = [10]
-Running task = [T2] priority = [5] burst = [15]
-Running task = [T3] priority = [2] burst = [20]
+Running task = [T1] priority = [4] burst = [20]
+Running task = [T2] priority = [2] burst = [25]
+Running task = [T3] priority = [3] burst = [25]
+Running task = [T4] priority = [3] burst = [15]
+Running task = [T5] priority = [10] burst = [10]
 
-Total execution time: 45 ms
+Total execution time: 95 ms
 ============================================================
 
-
---- Testing Priority ---
 
 ============================================================
 Priority Scheduling
 ============================================================
 
-Running task = [T2] priority = [5] burst = [15]
-Running task = [T1] priority = [3] burst = [10]
-Running task = [T3] priority = [2] burst = [20]
+Running task = [T5] priority = [10] burst = [10]
+Running task = [T1] priority = [4] burst = [20]
+Running task = [T3] priority = [3] burst = [25]
+Running task = [T4] priority = [3] burst = [15]
+Running task = [T2] priority = [2] burst = [25]
 
-Total execution time: 45 ms
+Total execution time: 95 ms
 ============================================================
 
-
---- Testing Round-Robin ---
 
 ============================================================
 Round-Robin (RR) Scheduling (Time Quantum = 10ms)
 ============================================================
 
-Running task = [T1] priority = [3] burst = [10]
-Running task = [T2] priority = [5] burst = [10]
-Running task = [T3] priority = [2] burst = [10]
-Running task = [T2] priority = [5] burst = [5]
-Running task = [T3] priority = [2] burst = [10]
+Running task = [T1] priority = [4] burst = [10]
+Running task = [T2] priority = [2] burst = [10]
+Running task = [T3] priority = [3] burst = [10]
+Running task = [T4] priority = [3] burst = [10]
+Running task = [T5] priority = [10] burst = [10]
+Running task = [T1] priority = [4] burst = [10]
+Running task = [T2] priority = [2] burst = [10]
+Running task = [T3] priority = [3] burst = [10]
+Running task = [T4] priority = [3] burst = [5]
+Running task = [T2] priority = [2] burst = [5]
+Running task = [T3] priority = [3] burst = [5]
 
-Total execution time: 45 ms
+Total execution time: 95 ms
 ============================================================
 
 
-✓ All schedulers executed successfully!
-
-============================================================
-✓ ALL TESTS PASSED!
-Your code is ready to submit!
-============================================================
+All scheduling algorithms completed.
 ```
